@@ -77,6 +77,40 @@ jun : -----
 
 ## 도메인 설계
 
+```mermaid
+classDiagram
+    class Car {
+        name
+        position
+        move()
+    }
+
+    class Race {
+        cars
+        moveCars()
+        findWinners()
+    }
+
+    class Game {
+        play()
+    }
+
+    class InputView {
+        getCarNames()
+        getCount()
+    }
+
+    class OutputView {
+        printRound()
+        printWinners()
+    }
+
+    Game --> Race
+    Race --> Car
+    Game --> InputView
+    Game --> OutputView
+```
+
 ### Car
 경주 게임에서 자동차의 이름과 현재 위치를 담당한다.
 
