@@ -13,6 +13,33 @@ class ApplicationTest extends NsTest {
     private static final int STOP = 3;
 
     @Test
+    void 공동_우승자_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni", "1");
+                    assertThat(output()).contains("최종 우승자 : pobi, woni");
+                },
+                MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 예외_테스트_이름_5자_초과() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,javaji", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_이름_공백() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi, ", "1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
             () -> {
