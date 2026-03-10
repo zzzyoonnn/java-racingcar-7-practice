@@ -3,7 +3,6 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -19,17 +18,15 @@ public class Application {
     String[] carName = input.split(",");
 
     Map<String, Integer> car = new HashMap<>();
-    List<Map<String, Integer>> cars = new ArrayList<>();
     for (String name : carName) {
       car.put(name, 0);
-      cars.add(car);
     }
 
     int max = 0;
     Random random = new Random();
     StringBuilder sb;
     for (int i = 0; i < count; i++) {
-      for (int j = 0; j < cars.size(); j++) {
+      for (int j = 0; j < carName.length; j++) {
         String name = carName[j];
         int num = random.nextInt(10);
 
