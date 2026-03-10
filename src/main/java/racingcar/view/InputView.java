@@ -12,6 +12,21 @@ public class InputView {
 
   public int getCount() {
     System.out.println("시도할 횟수는 몇 회인가요?(최대 100회)");
-    return Integer.parseInt(Console.readLine());
+    String input = Console.readLine();
+    validateCount(input);
+    return Integer.parseInt(input);
+  }
+
+  private void validateCount(String input) {
+    if (input == null || input.isBlank()) {
+      throw new IllegalArgumentException("횟수를 입력해주세요.");
+    }
+    if (!input.matches("\\d+")) {
+      throw new IllegalArgumentException("횟수는 숫자여야 합니다.");
+    }
+    int count = Integer.parseInt(input);
+    if (count < 1 || count > 100) {
+      throw new IllegalArgumentException("횟수는 1 이상 100 이하여야 합니다.");
+    }
   }
 }
