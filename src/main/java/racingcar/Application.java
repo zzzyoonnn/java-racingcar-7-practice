@@ -22,7 +22,6 @@ public class Application {
       car.put(name, 0);
     }
 
-    int max = 0;
     Random random = new Random();
     StringBuilder sb;
     for (int i = 0; i < count; i++) {
@@ -32,7 +31,6 @@ public class Application {
 
         if (num >= 4) {
           car.put(name, car.get(name) + 1);
-          max = Math.max(max, car.get(name));
         }
       }
 
@@ -45,9 +43,11 @@ public class Application {
       System.out.println(sb);
     }
 
+    int maxDistance = car.values().stream().mapToInt(Integer::intValue).max().orElse(0);
+
     ArrayList<String> result = new ArrayList<>();
     for (String cn : carName) {
-      if (car.get(cn) == max) result.add(cn);
+      if (car.get(cn) == maxDistance) result.add(cn);
     }
 
     sb = new StringBuilder();
