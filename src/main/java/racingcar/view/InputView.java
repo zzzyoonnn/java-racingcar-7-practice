@@ -16,6 +16,10 @@ public class InputView {
     if (input == null || input.isBlank()) {
       throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
     }
+
+    if (!input.matches("^[a-zA-Z가-힣,]+$")) {
+      throw new IllegalArgumentException("이름과 쉼표(,)로만 이루어진 문자열을 입력해주세요.");
+    }
   }
 
   public int getCount() {
